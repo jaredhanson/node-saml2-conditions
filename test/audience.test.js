@@ -33,7 +33,7 @@ describe('SAML assertion with an audience restriction', function() {
   
 });
 
-describe('SAML assertion with an audience restriction', function() {
+describe('SAML assertion with multiple audience restrictions', function() {
     
   var xml = fs.readFileSync(__dirname + '/data/multiple-audiences.xml', 'utf8');
   
