@@ -3,7 +3,7 @@ var conditions = require('index')
 
 describe('SAML assertion with a one time use condition', function() {
     
-  var xml = fs.readFileSync(__dirname + '/data/one-time-use.xml', 'utf8');
+  var xml = fs.readFileSync(__dirname + '/../data/OneTimeUse.xml', 'utf8');
   
   it('should be valid', function() {
     var ok = conditions.evaluate(xml, { audience: 'http://lucy.localtunnel.me/' });

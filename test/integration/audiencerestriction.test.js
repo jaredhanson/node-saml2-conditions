@@ -3,7 +3,7 @@ var conditions = require('index')
 
 describe('SAML assertion with an audience restriction', function() {
     
-  var xml = fs.readFileSync(__dirname + '/data/audience-restriction.xml', 'utf8');
+  var xml = fs.readFileSync(__dirname + '/../data/AudienceRestriction.xml', 'utf8');
   
   it('should be valid if intended for the audience', function() {
     var ok = conditions.evaluate(xml, { audience: 'http://lucy.localtunnel.me/' });
@@ -29,13 +29,14 @@ describe('SAML assertion with an audience restriction', function() {
     var ok = conditions.evaluate(xml, { audience: 'http://foo.example.com/', failWithError: true });
     expect(ok).to.be.an.instanceof(Error);
     expect(ok.message).to.be.equal("SAML assertion not intended for audience: http://lucy.localtunnel.me/");
+    expect(ok.indeterminate).to.be.undefined;
   });
   
 });
 
 describe('SAML assertion with multiple audience restrictions', function() {
     
-  var xml = fs.readFileSync(__dirname + '/data/multiple-audiences.xml', 'utf8');
+  var xml = fs.readFileSync(__dirname + '/../data/AudienceRestrictionWithMultipleAudiences.xml', 'utf8');
   
   it('should be valid if intended for the first audience', function() {
     var ok = conditions.evaluate(xml, { audience: 'http://lucy.localtunnel.me/' });
@@ -56,6 +57,7 @@ describe('SAML assertion with multiple audience restrictions', function() {
     var ok = conditions.evaluate(xml, { audience: 'http://foo.example.com/', failWithError: true });
     expect(ok).to.be.an.instanceof(Error);
     expect(ok.message).to.be.equal("SAML assertion not intended for audience: http://lucy.localtunnel.me/ http://samy.localtunnel.me/");
+    expect(ok.indeterminate).to.be.undefined;
   });
   
 });

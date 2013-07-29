@@ -3,7 +3,7 @@ var conditions = require('index')
 
 describe('SAML assertion with a proxy restriction', function() {
     
-  var xml = fs.readFileSync(__dirname + '/data/proxy-restriction.xml', 'utf8');
+  var xml = fs.readFileSync(__dirname + '/../data/ProxyRestriction.xml', 'utf8');
   
   it('should be valid', function() {
     var ok = conditions.evaluate(xml);

@@ -3,7 +3,7 @@ var conditions = require('index')
 
 describe('SAML assertion with a condition that is not understood', function() {
     
-  var xml = fs.readFileSync(__dirname + '/data/not-understood-condition.xml', 'utf8');
+  var xml = fs.readFileSync(__dirname + '/../data/NotUnderstood.xml', 'utf8');
     
   it('should be undefined', function() {
     var ok = conditions.evaluate(xml);
@@ -14,6 +14,7 @@ describe('SAML assertion with a condition that is not understood', function() {
     var ok = conditions.evaluate(xml, { failWithError: true });
     expect(ok).to.be.an.instanceof(Error);
     expect(ok.message).to.be.equal("SAML condition not understood: BarRestriction http://schemas.example.com/foo/");
+    expect(ok.indeterminate).to.be.true;
   });
   
 });
