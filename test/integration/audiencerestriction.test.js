@@ -28,7 +28,7 @@ describe('SAML assertion with an audience restriction', function() {
   it('should return an error when failWithError is set', function() {
     var ok = conditions.evaluate(xml, { audience: 'http://foo.example.com/', failWithError: true });
     expect(ok).to.be.an.instanceof(Error);
-    expect(ok.message).to.be.equal("SAML assertion not intended for audience: http://lucy.localtunnel.me/");
+    expect(ok.message).to.be.equal("SAML assertion not intended for entity");
     expect(ok.indeterminate).to.be.undefined;
   });
   
@@ -56,7 +56,7 @@ describe('SAML assertion with multiple audience restrictions', function() {
   it('should return an error when failWithError is set', function() {
     var ok = conditions.evaluate(xml, { audience: 'http://foo.example.com/', failWithError: true });
     expect(ok).to.be.an.instanceof(Error);
-    expect(ok.message).to.be.equal("SAML assertion not intended for audience: http://lucy.localtunnel.me/ http://samy.localtunnel.me/");
+    expect(ok.message).to.be.equal("SAML assertion not intended for entity");
     expect(ok.indeterminate).to.be.undefined;
   });
   

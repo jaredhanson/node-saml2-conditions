@@ -27,7 +27,7 @@
   "main": "./lib",
   "dependencies": {
     "xmldom": "0.1.x",
-    "xtraverse": "0.0.x",
+    "xtraverse": "0.1.x",
     "moment": "2.x.x"
   },
   "devDependencies": {

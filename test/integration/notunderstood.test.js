@@ -13,7 +13,7 @@ describe('SAML assertion with a condition that is not understood', function() {
   it('should return an error when failWithError is set', function() {
     var ok = conditions.evaluate(xml, { failWithError: true });
     expect(ok).to.be.an.instanceof(Error);
-    expect(ok.message).to.be.equal("SAML condition not understood: BarRestriction http://schemas.example.com/foo/");
+    expect(ok.message).to.be.equal("SAML condition not understood: http://schemas.example.com/foo/:BarRestriction");
     expect(ok.indeterminate).to.be.true;
   });
   
